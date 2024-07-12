@@ -56,39 +56,20 @@ def insertion_sort(lst):
     return lst
 
 # Генеруємо великий масив випадкових цілих чисел
-n = 10**5
+n = 10**3
 data = []
 for _ in range(n):
     data.append(randint(1, n))
 
-start_time = timeit.default_timer()
-insertion_sort(data.copy())
-end_time = timeit.default_timer()
-insertion_sort_time = end_time - start_time
-
 
 # Вимірюємо час виконання сортування
-def timer(function):
-    start_time = default_timer()
-    function(data.copy())
-    end_time = default_timer()
-    return end_time - start_time
-
 merge_sort_time = timeit(lambda: merge_sort(data.copy()), number=1)
 insertion_sort_time = timeit(lambda: insertion_sort(data.copy()), number=1)
-timsort_time_sort = timeit(lambda: (data.copy()).sort, number=1)
 timsort_time_sorted = timeit(lambda: sorted(data.copy()), number=1)
 
-sd=timer(insertion_sort)
-print(sd)
-ds = timer(sorted)
-print(f"{ds:.6f}")
-
-
-
+# Виводимо результати
 print(f"Merge Sort time: {merge_sort_time:.6f} seconds")
 print(f"Insertion Sort time: {insertion_sort_time:.6f} seconds")
-print(f"Timsort time_sort: {timsort_time_sort:.6f} seconds")
 print(f"Timsort time_sorted: {timsort_time_sorted:.6f} seconds")
 
 
